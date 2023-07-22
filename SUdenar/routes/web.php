@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\CoordinadoresController;
+use App\Http\Controllers\Admin\SemilleroCoordinadorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,5 @@ Route::get('/', function () {
 });
 
 Route::resource('coordinadores', CoordinadoresController::class)->names('admin.coordinadores');
+
+Route::resource('semillerocoordinador', SemilleroCoordinadorController::class)->names('admin.semillerocoordinador');
