@@ -1,6 +1,0 @@
-// .devcontainer/devcontainer.json
-{
-  "extensions": [
-    "ikappas.php-mysql"
-  ]
-}
