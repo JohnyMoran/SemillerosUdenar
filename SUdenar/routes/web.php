@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CoordinadoresController;
 use App\Http\Controllers\Admin\SemilleroCoordinadorController;
 use App\Http\Controllers\Admin\EventoProyectoController;
+use App\Http\Controllers\Admin\ParticipacionesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,5 @@ Route::resource('coordinadores', CoordinadoresController::class)->names('admin.c
 Route::resource('semillerocoordinador', SemilleroCoordinadorController::class)->names('admin.semillerocoordinador');
 
 Route::resource('eventoproyecto', EventoProyectoController::class)->names('admin.eventoproyecto');
+
+Route::resource('participaciones', ParticipacionesController::class)->names('admin.participaciones');
