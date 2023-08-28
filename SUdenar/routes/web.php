@@ -31,3 +31,19 @@ Route::get('/dashboard', function () {
 
 
 Route::resource('semilleros', SemillerosController::class)->names('admin.semilleros');
+
+Route::resource('semilleristas', SemilleristasController::class)->names('admin.semilleristas');
+
+Route::resource('proyectos', ProyectosController::class)->names('admin.proyectos');
+
+Route::resource('eventos', EventosController::class)->names('admin.eventos');
+
+Route::resource('coordinadores', CoordinadoresController::class)->names('admin.coordinadores');
+
+Route::resource('semillerocoordinador', SemilleroCoordinadorController::class)->names('admin.semillerocoordinador');
+
+Route::resource('eventoproyecto', EventoProyectoController::class)->names('admin.eventoproyecto');
+
+Route::resource('participaciones', ParticipacionesController::class)->names('admin.participaciones');
+
+Route::get('/admin/semilleros/{id}/semilleristas')->name('admin.semilleros.semilleristas');
