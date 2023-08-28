@@ -24,6 +24,7 @@
     <div class="card">
         <div class="card-header">
             <a class="btn btn-success" href="{{route('admin.semilleros.create')}}">Agregar Semillero</a>
+            <a class="btn btn-primary" href="{{ route('admin.reports.semilleros_pdf') }}">Generar Reporte</a>
         </div>
         <div class="card-body">
             <table class="table table-striped">

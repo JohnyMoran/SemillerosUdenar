@@ -115,7 +115,64 @@ class SemillerosController extends Controller
      */
     public function update(Request $request, Semillero $semillero)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|unique:semilleros,nombre,' . $semillero->id,
+            'correo' => 'required|email',
+            'logo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'descripcion' => 'required',
+            'mision' => 'required',
+            'vision' => 'required',
+            'valores' => 'required',
+            'objetivos' => 'required',
+            'lineas_investigacion' => 'required',
+            'archivo_presentacion' => 'file|mimes:pdf',
+            'numero_resolucion_creacion' => 'required',
+            'fecha_resolucion_creacion' => 'required|date',
+            'archivo_resolucion_creacion' => 'file|mimes:pdf',
+        ],
+        [
+            'nombre.unique' => 'Ya existe un semillero con este nombre.',
+        ]);
+
+        if ($request->hasFile('logo')) {
+            $logoFile = $request->file('logo');
+            $logoPath = $logoFile->store('logos', 'public');
+        } else {
+            $logoPath = $semillero->logo;
+        }
+
+        if ($request->hasFile('archivo_presentacion')) {
+            $archivoPresentacion = $request->file('archivo_presentacion');
+            $rutaArchivop = $archivoPresentacion->store('archivos_presentacion', 'public');
+        } else {
+            $rutaArchivop = $semillero->archivo_presentacion;
+        }
+
+        if ($request->hasFile('archivo_resolucion_creacion')) {
+            $archivoResolucion = $request->file('archivo_resolucion_creacion');
+            $rutaArchivor = $archivoResolucion->store('archivo_resolucion_creacion', 'public');
+        } else {
+            $rutaArchivor = $semillero->archivo_resolucion_creacion;
+        }
+
+        $semillero->update([
+            'nombre' => $request->nombre,
+            'correo' => $request->correo,
+            'logo' => $logoPath,
+            'descripcion' => $request->descripcion,
+            'mision' => $request->mision,
+            'vision' => $request->vision,
+            'valores' => $request->valores,
+            'objetivos' => $request->objetivos,
+            'lineas_investigacion' => $request->lineas_investigacion,
+            'archivo_presentacion' => $rutaArchivop,
+            'numero_resolucion_creacion' => $request->numero_resolucion_creacion,
+            'fecha_resolucion_creacion' => $request->fecha_resolucion_creacion,
+            'archivo_resolucion_creacion' => $rutaArchivor,
+        ]);
+
+        return redirect()->route('admin.semilleros.index')
+            ->with('success', 'El semillero se ha actualizado exitosamente.');
     }
 
     /**
