@@ -118,4 +118,14 @@ class CoordinadoresController extends Controller
     {
         //
     }
+
+    public function generateCoordinadoresPDF()
+    {
+        $coordinadores = Coordinador::all();
+        $pdf = new Dompdf();
+        $pdf->loadView('admin.reports.coordinadores_pdf', compact('coordinadores'));
+        $pdf->setPaper('A4', 'portrait');
+        $pdf->render();
+        return $pdf->stream('reporte_coordinadores.pdf');
+    }
 }

@@ -26,6 +26,7 @@
                     <h3 class="card-title">Lista de Participaciones</h3>
                     <div class="card-tools">
                         <a href="{{ route('admin.participaciones.create') }}" class="btn btn-primary">Agregar presentación</a>
+                        <a class="btn btn-primary" href="{{ route('admin.reports.participaciones_pdf') }}">Generar Reporte</a>
                     </div>
                 </div>
                 <div class="card-body">

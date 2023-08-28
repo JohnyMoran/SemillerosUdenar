@@ -24,6 +24,7 @@
     <div class="card">
         <div class="card-header">
             <a class="btn btn-success" href="{{route('admin.coordinadores.create')}}">Agregar coordinador</a>
+            <a class="btn btn-primary" href="{{ route('admin.reports.coordinadores_pdf') }}">Generar Reporte</a>
         </div>
         <div class="card-body">
             <table class="table table-striped">
